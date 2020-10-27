@@ -1,0 +1,57 @@
+Write a script called "nodups".
+
+This script should take two arguments, both the names of
+directories.  If the number of arguments is wrong, or either
+argument is not a directory, give a warning and exit.
+
+When given two arguments, a fully-functional script should do this:
+
+ 1) For every file in the first directory, check the second
+    directory for a file that is the same.  If there is a file
+    with the same name and same contents in the second directory,
+    print a message and echo the correct command to remove the duplicate file.
+
+    NOTE: your script should not actually remove the duplicate file!
+    Print the message that it should be removed, but do not actually
+    run "rm" from inside your script!
+
+ 2) If there is a file with the same name but different contents
+    in the second directory, print a message but do not remove it.
+
+ 3) If there is no file with the same name in the second directory,
+    print a message.
+
+
+There are two sample directories in "test" for you to work on,
+named "A" and "B".  There is also an empty folder named "C",
+and a plain file named "D".
+
+Here is correct output for "A" and "B":
+
+    elvis:~ 27> ../nodups A B
+    A/a1.txt : B/a1.txt matches - removing from B
+    A/b1.txt : B/b1.txt exists but contents differ
+    A/c1.txt : no c1.txt in B
+
+
+Here is correct output for the wrong number of arguments:
+
+    elvis:~ 28> ../nodups A
+    usage: nodups dir1 dir2
+    dir1 and dir2 are directories with files in them.
+    all files in dir2 which already exist in dir1 are removed.
+
+
+Here is correct output for one argument not a directory:
+
+    elvis:~ 29> ../nodups A D
+    D is not a directory.
+
+
+Here is correct output for naming the same directory twice:
+
+    elvis:~ 30> ../nodups A A
+    Same directory specified twice.  Disaster results.
+
+
+For comparisons, you will want to see cmp(1); note the "-s" flag.
